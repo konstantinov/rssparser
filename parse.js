@@ -87,7 +87,7 @@ function getSiteInfo(siteUrl) {
 			if (title) 
 				metas.siteName = xmlDecoder.decode(title);
 			
-			metas.hasVideo = !!metas['og:type'];
+			metas.hasVideo = !!(metas['og:type'] && metas['og:type'].match(/^video/));
 
 			const { 0: favicon } =  data
 				.match(/<link[^>]+>/sig)
